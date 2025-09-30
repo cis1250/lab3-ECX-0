@@ -35,3 +35,21 @@ while (is_sentence(user_sentence) == False):
     print("This does not meet the criteria for a sentence.")
     user_input = input("Enter a sentence: ")
     
+word_dict = {};
+
+sentence = "";
+
+for letter in user_sentence:
+    if letter is ',' or letter is '.' or letter is '!':
+        continue;
+    sentence += letter;
+
+for word in sentence.lower().strip('!.,').split():
+    # Conditions #
+    if (word_dict.get(word) is None):
+        word_dict[word] = 0;
+    # Increment Value #
+    word_dict[word] += 1;
+
+for word, amount in word_dict.items():
+    print(f"{word}: {amount}");
